@@ -1,6 +1,6 @@
 # test_new
 
-A new Flutter project.
+A Socail project. go to master
 
 ## Getting Started
 
