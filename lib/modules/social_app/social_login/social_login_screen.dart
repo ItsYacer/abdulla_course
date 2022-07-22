@@ -5,7 +5,7 @@ import 'package:test_new/layout/social_app/cubit/cubit.dart';
 import 'package:test_new/layout/social_app/social_layout.dart';
 import 'package:test_new/modules/social_app/social_login/cubit/cubit.dart';
 import 'package:test_new/modules/social_app/social_login/cubit/state.dart';
-import 'package:test_new/modules/social_app/social_register/shop_register_screen.dart';
+import 'package:test_new/modules/social_app/social_register/social_register_screen.dart';
 import 'package:test_new/shared/components/components.dart';
 import 'package:test_new/shared/components/constants.dart';
 import 'package:test_new/shared/network/local/cache_helper.dart';
@@ -87,11 +87,11 @@ class SocialLoginScreen extends StatelessWidget {
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: SocialLoginCubit.get(context).isPassword,
                           onFieldSubmitted: (value) {
-                            if (formKey.currentState!.validate()) {
-                              SocialLoginCubit.get(context).loginUsers(
-                                  email: emailController.text,
-                                  password: passwordController.text);
-                            }
+                            // if (formKey.currentState!.validate()) {
+                            //   SocialLoginCubit.get(context).loginUsers(
+                            //       email: emailController.text,
+                            //       password: passwordController.text);
+                            // }
                           },
                           validator: (value) {
                             if (value!.isEmpty) {

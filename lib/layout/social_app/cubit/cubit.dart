@@ -46,7 +46,6 @@ class SocialCubit extends Cubit<SocialStates> {
   List<String> titles = ['Home', 'Chat', 'Home', 'Profile', 'Settings'];
 
   void changeBottomNav(index) {
-
     currentIndex = index;
     if (index == 0) {
       getPosts();
@@ -101,7 +100,6 @@ class SocialCubit extends Cubit<SocialStates> {
 
   Future<void> getCoverImage() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
     if (pickedFile != null) {
       coverImage = File(pickedFile.path);
       emit(SocialProfileImagePickedSuccessState());
@@ -272,7 +270,9 @@ class SocialCubit extends Cubit<SocialStates> {
         element.reference.collection('likes').get().then((value) {
           posts.add(PostModel.formJson(element.data()));
           likes.add(value.docs.length);
+         posts =posts.toSet().toList();
           emit(SocialGetPostSuccessState());
+
         }).catchError((error) {});
       }
     }).catchError((error) {
@@ -441,6 +441,7 @@ class SocialCubit extends Cubit<SocialStates> {
           print(element['name'].toString());
           searchList.add(element);
         }
+        searchList =searchList.toSet().toList();
         emit(SocialGetSearchSuccessState());
       });
     }).catchError((error) {});
